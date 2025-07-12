@@ -33,7 +33,8 @@ function App (){
       }
 
   })
-
+  const buttonClick = () => {
+  };
   return(
     <>
       <div className = "App">
@@ -41,6 +42,7 @@ function App (){
         <div id = "reader"></div>
         <p>{scanResult}</p>
         <p>Selected Date: {yearMonthDay}</p>
+        <button onClick={buttonClick}>Scan Again</button>
       </div>
     </>
   )
