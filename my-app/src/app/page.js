@@ -3,7 +3,7 @@
 import { Html5QrcodeScanner } from "html5-qrcode";
 import { useEffect, useState, useRef } from "react";
 import DateSelector from '../components/DateSelect.js';
-
+import Header from '../components/Header.js';
 function App() {
   const [yearMonthDay, setYearMonthDay] = useState("20250101");
   const [scanResult, setScanResult] = useState(null);
@@ -78,12 +78,15 @@ function App() {
 
   return (
     <div className="App">
+      <Header />
+      <div className = "p-5">
       <DateSelector setYearMonthDay={setYearMonthDay} />
       {scannerVisible && <div id="reader" />}
       <p>{scanResult}</p>
-      <p>Selected Date: {yearMonthDay}</p>
+      {/*<p>Selected Date: {yearMonthDay}</p>*/}
       {buttonVisible && <button onClick={buttonClick} id = "button">Scan Again</button>}
       {/*<button onClick={buttonClick}>Scan Again</button>*/}
+      </div>
     </div>
   );
 }
