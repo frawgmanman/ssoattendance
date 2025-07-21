@@ -19,7 +19,6 @@ const DateSelector = ({ setYearMonthDay }) => {
   const [selectedMonth, setSelectedMonth] = useState("01");
   const [selectedYear, setSelectedYear] = useState("2025");
   const [selectedDay, setSelectedDay] = useState("01");
-  //const [yearmonthday, setyearmonthday] = useState('01012025');
 
   function handleChange(m,d,y){
     const stringday = y+m+d;
@@ -44,7 +43,7 @@ const DateSelector = ({ setYearMonthDay }) => {
         value={selectedYear}
         onChange={(e) => {
             setSelectedYear(e.target.value);
-            handleChange(selectedMonth, selectedDay, selectedYear);
+            handleChange(selectedMonth, selectedDay, e.target.value);
         }}
       >
         {[2023, 2024, 2025, 2026].map((year) => (
