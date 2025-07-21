@@ -22,9 +22,8 @@ const DateSelector = ({ setYearMonthDay }) => {
   //const [yearmonthday, setyearmonthday] = useState('01012025');
 
   function handleChange(m,d,y){
-    const stringday = m + d + y;
+    const stringday = y+m+d;
     setYearMonthDay(stringday);
-    //console.log(stringday);
   }
 
   const getDaysInMonth = (month, year) => {
@@ -38,7 +37,7 @@ const DateSelector = ({ setYearMonthDay }) => {
   });
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-row gap-2">
       <select
         name="year"
         id="year"
