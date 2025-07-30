@@ -38,6 +38,7 @@ function App() {
         if (!response.ok) throw new Error('Network response was not ok');
         setScanResult(result);
         setSuccess(true);
+        setButtonVisible(true);
         //it seems to take a while for
       })
       .catch(error => {
@@ -49,7 +50,6 @@ function App() {
         .then(() => {
           scannerRef.current = null;
           setScannerVisible(false); 
-          setButtonVisible(true);
         })
         .catch(err => console.error("Clear failed:", err));
     }
