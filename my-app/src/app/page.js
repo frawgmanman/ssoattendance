@@ -86,11 +86,10 @@ function App() {
       <div className = "p-5">
       <DateSelector setYearMonthDay={setYearMonthDay} />
       {scannerVisible && <div id="reader" />}
-      {succes && <p>Scan successful!</p>}
+      {succes && <p>Scan successful! {scanResult}</p>}
       {erro && <p>Scan failed, please try again</p>}
-      <p>{scanResult}</p>
       {/*<p>Selected Date: {yearMonthDay}</p>*/}
-      {buttonVisible && <button onClick={buttonClick} id = "button" className = 'bg-red-800 text-white rounded-3xl p-2'>Scan Again</button>}
+      {buttonVisible && <button onClick={buttonClick} id = "button" className = 'bg-red-800 text-white rounded-3xl p-2 mt-2'>Scan Again</button>}
       {/*<button onClick={buttonClick}>Scan Again</button>*/}
       </div>
     </div>
