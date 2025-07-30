@@ -10,6 +10,8 @@ function App() {
   const [scannerVisible, setScannerVisible] = useState(true);
   const [buttonVisible, setButtonVisible] = useState(false);
   const [studentName, setStudentName] = useState(false);
+  const [erro, setError] = useState(false);
+  const [succes, setSuccess] = useState(false);
 
   const scannerRef = useRef(null);
   const dateRef = useRef(yearMonthDay);
@@ -27,7 +29,7 @@ function App() {
     formData.forEach((value, key) => {
       console.log(`${key}: ${value}`);
     });
-
+    //no delays here
     fetch(scriptURL, {
       method: 'POST',
       body: formData
@@ -35,11 +37,11 @@ function App() {
       .then(response => {
         if (!response.ok) throw new Error('Network response was not ok');
         setScanResult(result);
-        alert('QR Code submitted successfully!');
+        setSuccess(true);
+        //it seems to take a while for
       })
       .catch(error => {
         console.error('Error!', error.message);
-        alert('Submission failed. Try again.');
       });
 
     if (scannerRef.current) {
@@ -74,6 +76,8 @@ function App() {
     setScannerVisible(true); // trigger re-render and re-init
     setScanResult(null); 
     setButtonVisible(false);
+    setSuccess(false);
+    setError(false);
   };
 
   return (
@@ -82,9 +86,11 @@ function App() {
       <div className = "p-5">
       <DateSelector setYearMonthDay={setYearMonthDay} />
       {scannerVisible && <div id="reader" />}
+      {succes && <p>Scan successful!</p>}
+      {erro && <p>Scan failed, please try again</p>}
       <p>{scanResult}</p>
       {/*<p>Selected Date: {yearMonthDay}</p>*/}
-      {buttonVisible && <button onClick={buttonClick} id = "button">Scan Again</button>}
+      {buttonVisible && <button onClick={buttonClick} id = "button" className = 'bg-red-800 text-white rounded-3xl p-2'>Scan Again</button>}
       {/*<button onClick={buttonClick}>Scan Again</button>*/}
       </div>
     </div>
